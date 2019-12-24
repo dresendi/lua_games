@@ -21,6 +21,12 @@ function love.load()
     score = 0
 
     myFont = love.graphics.newFont(40)
+
+    blip_sound = love.audio.newSource("sounds/blip.wav", "static")
+    --blip_sound:setVolume(2)
+    
+    background_music = love.audio.newSource("sounds/nature.ogg")
+    background_music:play()
 end
 
 function love.update(dt)
@@ -171,6 +177,7 @@ function spawnBullet()
     bullet.dead = false
 
     table.insert(bullets, bullet)
+    blip_sound:play()
 end
 
 function love.keypressed(key, scancode, isrepeat) 
